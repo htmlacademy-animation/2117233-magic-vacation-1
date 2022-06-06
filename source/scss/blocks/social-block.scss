@@ -46,11 +46,13 @@
 
   &:hover,
   .social-block--active & {
-    color: $c-purple;
+    transform: scaleY(1);
+    color: $c-light;
 
     &::before {
       width: 112.5%;
       height: 112.5%;
+      background-color: $c-purple;
     }
   }
 

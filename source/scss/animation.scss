@@ -14,3 +14,113 @@
     transition-timing-function: ease;
   }
 }
+
+.social-block {
+  &:hover {
+    .social-block__link {
+      animation-name: fade-in-up;
+      animation-duration: 0.4s;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+
+      &--insta {
+        animation-delay: 0.25s;
+      }
+
+      &--vk {
+        animation-delay: 0.5s;
+      }
+    }
+  }
+}
+
+.social-block__toggler {
+  &::before {
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+  }
+
+  &:hover {
+    .social-block--active & {
+      color: $c-dark;
+      transform: scale(1.1);
+
+      &::before {
+        background-color: $c-light;
+        border: 2px solid $c-light;
+      }
+    }
+  }
+}
+
+.social-block__list {
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro__message {
+  animation-name: fade-in-up;
+  animation-duration: 0.8s;
+}
+
+@keyframes fade-in-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slider__item-text {
+  .swiper-slide-active & {
+    animation-name: fade-in-to-left;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+  }
+
+  .swiper-slide-next & {
+    animation-name: fade-in-to-left;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.6s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes text-field {
+  from {
+    transform: translateX(50%) scaleX(0);
+  }
+
+  to {
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+.form__field {
+  animation-name: text-field;
+  animation-duration: 0.35s;
+  animation-timing-function: linear;
+  animation-delay: 0.35s;
+  animation-fill-mode: both;
+}
