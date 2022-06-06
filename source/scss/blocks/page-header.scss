@@ -241,8 +241,6 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition-property: color;
-    transition-duration: 0.35s;
 
     &::after {
       content: "";
@@ -254,9 +252,6 @@
       left: auto;
       right: 0;
       display: block;
-      transition-property: width;
-      transition-duration: 0.35s;
-      transition-timing-function: ease-in-out;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -281,9 +276,6 @@
     &:focus {
       color: $c-purple;
       outline: none;
-      transition-property: color;
-      transition-duration: 0.5s;
-      transition-timing-function: ease;
 
       &::after {
         opacity: 1;
