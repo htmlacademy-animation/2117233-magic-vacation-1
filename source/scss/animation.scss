@@ -1,3 +1,78 @@
+// Старт приложения
+.intro__message {
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+.page-header__logo {
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition-property: transform, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: $cubic-fast, $cubic-fast;
+  transition-delay: 0.5s;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page-header__menu {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: $cubic-fast;
+  transition-delay: 0.5s;
+
+  .loaded & {
+    opacity: 1;
+  }
+
+  a {
+    &.active {
+      &::after {
+        transition-property: width;
+        transition-duration: 0.5s;
+        transition-timing-function: $cubic-fast;
+        transition-delay: 0.5s;
+
+        .loaded & {
+          width: 100%;
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+  }
+}
+
+.page-header__social {
+  opacity: 0;
+  transform: scale(0);
+  transition-property: opacity, transform;
+  transition-duration: 0.3s, 0.3s;
+  transition-timing-function: $cubic-fast, $cubic-fast;
+  transition-delay: 0.5s, 0.5s;
+
+  .loaded & {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.screen__footer {
+  transition-property: opacity, transform;
+  transition-duration: 0.5s, 0.5s;
+  transition-timing-function: $cubic-fast, $cubic-fast;
+  transition-delay: 0.5s, 0.5s;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+// Хедер
 .js-menu-link {
   transition-property: color;
   transition-duration: 0.35s;
@@ -71,7 +146,7 @@
     transform: translateY(0);
   }
 }
-
+// Главный экран
 .intro__message {
   animation-name: fade-in-up;
   animation-duration: 0.8s;
@@ -106,7 +181,7 @@
     animation-fill-mode: both;
   }
 }
-
+// Экран "Игра"
 @keyframes text-field {
   from {
     transform: translateX(50%) scaleX(0);
