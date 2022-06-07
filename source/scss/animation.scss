@@ -1,12 +1,24 @@
-// Старт приложения
+// Главный экран
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .intro__message {
+  animation-name: fade-in-up;
+  animation-duration: 0.8s;
   animation-delay: 1s;
   animation-fill-mode: both;
 }
 
 .page-header__logo {
-  opacity: 0;
-  transform: translateX(-2rem);
   transition-property: transform, opacity;
   transition-duration: 0.5s;
   transition-timing-function: $cubic-fast, $cubic-fast;
@@ -19,7 +31,6 @@
 }
 
 .page-header__menu {
-  opacity: 0;
   transition-property: opacity;
   transition-duration: 0.5s;
   transition-timing-function: $cubic-fast;
@@ -48,8 +59,6 @@
 }
 
 .page-header__social {
-  opacity: 0;
-  transform: scale(0);
   transition-property: opacity, transform;
   transition-duration: 0.3s, 0.3s;
   transition-timing-function: $cubic-fast, $cubic-fast;
@@ -95,7 +104,7 @@
     .social-block__link {
       animation-name: fade-in-up;
       animation-duration: 0.4s;
-      animation-timing-function: linear;
+      animation-timing-function: $cubic-fast;
       animation-fill-mode: both;
 
       &--insta {
@@ -110,16 +119,14 @@
 }
 
 .social-block__toggler {
-  &::before {
-    transition-property: transform;
-    transition-duration: 0.5s;
-    transition-timing-function: linear;
-  }
-
   &:hover {
     .social-block--active & {
       color: $c-dark;
       transform: scale(1.1);
+
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: $cubic-fast;
 
       &::before {
         background-color: $c-light;
@@ -127,29 +134,18 @@
       }
     }
   }
+
+  &:not(:hover) {
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: $cubic-fast;
+  }
 }
 
 .social-block__list {
   transition-property: opacity;
   transition-duration: 0.5s;
   transition-timing-function: linear;
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-// Главный экран
-.intro__message {
-  animation-name: fade-in-up;
-  animation-duration: 0.8s;
 }
 
 @keyframes fade-in-to-left {
