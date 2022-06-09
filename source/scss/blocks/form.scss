@@ -29,7 +29,7 @@
   }
 }
 
-.form__field {
+.active .form__field {
   flex: none;
   margin-right: 3rem;
   padding: 0 5.6rem;
@@ -43,6 +43,8 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
 
   &:focus {
     border: 1px solid $c-purple;
