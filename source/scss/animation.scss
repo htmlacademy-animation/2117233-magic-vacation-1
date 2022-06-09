@@ -1,0 +1,191 @@
+// Главный экран
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro__message {
+  animation-name: fade-in-up;
+  animation-duration: 0.8s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+.page-header__logo {
+  transition-property: transform, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: $cubic-fast, $cubic-fast;
+  transition-delay: 0.5s;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page-header__menu {
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: $cubic-fast;
+  transition-delay: 0.5s;
+
+  .loaded & {
+    opacity: 1;
+  }
+
+  a {
+    &.active {
+      &::after {
+        transition-property: width;
+        transition-duration: 0.5s;
+        transition-timing-function: $cubic-fast;
+        transition-delay: 0.5s;
+
+        .loaded & {
+          width: 100%;
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+  }
+}
+
+.page-header__social {
+  transition-property: opacity, transform;
+  transition-duration: 0.3s, 0.3s;
+  transition-timing-function: $cubic-fast, $cubic-fast;
+  transition-delay: 0.5s, 0.5s;
+
+  .loaded & {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.screen__footer {
+  transition-property: opacity, transform;
+  transition-duration: 0.5s, 0.5s;
+  transition-timing-function: $cubic-fast, $cubic-fast;
+  transition-delay: 0.5s, 0.5s;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+// Хедер
+.js-menu-link {
+  transition-property: color;
+  transition-duration: 0.35s;
+
+  &::after {
+    transition-property: width;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+  }
+
+  &:focus {
+    transition-property: color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+  }
+}
+
+.social-block {
+  &:hover {
+    .social-block__link {
+      animation-name: fade-in-up;
+      animation-duration: 0.4s;
+      animation-timing-function: $cubic-fast;
+      animation-fill-mode: both;
+
+      &--insta {
+        animation-delay: 0.25s;
+      }
+
+      &--vk {
+        animation-delay: 0.5s;
+      }
+    }
+  }
+}
+
+.social-block__toggler {
+  &:hover {
+    .social-block--active & {
+      color: $c-dark;
+      transform: scale(1.1);
+
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: $cubic-fast;
+
+      &::before {
+        background-color: $c-light;
+        border: 2px solid $c-light;
+      }
+    }
+  }
+
+  &:not(:hover) {
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: $cubic-fast;
+  }
+}
+
+.social-block__list {
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+}
+
+@keyframes fade-in-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slider__item-text {
+  .swiper-slide-active & {
+    animation-name: fade-in-to-left;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+  }
+
+  .swiper-slide-next & {
+    animation-name: fade-in-to-left;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.6s;
+    animation-fill-mode: both;
+  }
+}
+// Экран "Игра"
+.form__field {
+  width: calc(100% - 18rem);
+  border-radius: 7%;
+  transform: translateX(50%) scaleX(0);
+  opacity: 0;
+
+  transition-property: all;
+  transition-duration: 0.35s;
+  transition-timing-function: linear;
+  transition-delay: 0.3s;
+}
