@@ -159,6 +159,13 @@
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
+    transform: scale(0);
+    color: rgba(255, 255, 255, 0);
+
+    animation-name: bullit-scale, bullit-color;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: $smooth-jump, ease-in;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -179,10 +186,38 @@
 
   p {
     margin: 0;
+    opacity: 0;
+    transform: translateX(2.8rem);
+
+    animation-name: p-transform, text-opacity;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in, ease-out;
+    animation-fill-mode: forwards;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
     }
+  }
+}
+
+.rules__item:nth-child(2) {
+  &::before,
+  p {
+    animation-delay: 0.3s;
+  }
+}
+
+.rules__item:nth-child(3) {
+  &::before,
+  p {
+    animation-delay: 0.5s;
+  }
+}
+
+.rules__item:nth-child(4) {
+  &::before,
+  p {
+    animation-delay: 0.7s;
   }
 }
 
@@ -209,5 +244,64 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
+  }
+
+  &::before {
+    left: auto;
+    right: 0;
+    width: 20%;
+    transform: translate(0, -50%);
+
+    opacity: 0;
+    animation-name: rules-link-bg;
+    animation-duration: 0.3s;
+    animation-delay: 0.7s;
+    animation-timing-function: $smooth-deceleration;
+    animation-fill-mode: forwards;
+  }
+}
+
+.rules__link-text {
+  opacity: 0;
+  animation-name: text-opacity;
+  animation-duration: 0.3s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bullit-scale {
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bullit-color {
+  100% {
+    color: $c-light;
+  }
+}
+
+@keyframes p-transform {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes text-opacity {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rules-link-bg {
+  0% {
+    opacity: 0.2;
+    width: 20%;
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
   }
 }
