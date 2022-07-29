@@ -29,6 +29,33 @@
   }
 }
 
+.form__field--wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3rem;
+  margin-right: 3rem;
+  width: calc(100% - 21rem);
+
+  @media (min-width: $stop-scaling) {
+    margin-right: 30px;
+    width: calc(100% - 210px);
+  }
+
+  @media (orientation: portrait) {
+    margin-right: 1rem;
+    width: calc(100% - 5rem);
+  }
+
+  @media (max-width: $tablet) and (orientation: landscape) {
+    width: calc(100% - 9rem);
+  }
+
+  @media (max-width: $mobile) and (orientation: landscape) {
+    margin-right: 1rem;
+    width: calc(100% - 5rem);
+  }
+}
+
 .form__field {
   flex: none;
   margin-right: 3rem;
@@ -76,6 +103,49 @@
     height: 4rem;
     font-size: 1.6rem;
   }
+}
+
+.form__field--text {
+  width: 100%;
+  margin-right: 0;
+  transform: translateX(calc(100% - 6rem));
+  transition: transform 0.5s ease;
+
+  .active & {
+    transform: translateX(0);
+  }
+}
+
+.form__field--email {
+  width: 100%;
+  margin-right: 0;
+}
+
+.form__field--animated {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 3rem;
+  background-color: $c-light;
+  transform: translate3d(calc(100% - 6rem), 0, 0);
+  animation-name: slide;
+  animation-delay: 1.2s;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.form__field--winner__email {
+  width: 100%;
+  margin-right: 0;
+  opacity: 0;
+  animation-name: show;
+  animation-delay: 1.7s;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
 }
 
 .form__button {
@@ -126,7 +196,7 @@
 }
 
 .form--result {
-  .form__field {
+  .form__field--wrapper {
     width: calc(100% - 31rem);
 
     @media (min-width: $stop-scaling) {
@@ -144,5 +214,29 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: calc(100% - 5rem);
     }
+  }
+}
+
+.result__form--second-result {
+  .form__field-wrapper {
+    opacity: 0;
+    animation-name: show;
+    animation-delay: 1.2s;
+    animation-fill-mode: forwards;
+  }
+
+  .form__button {
+    opacity: 0;
+    color: rgba(0, 0, 0, 0);
+    animation-name: show, btn-color-show;
+    animation-fill-mode: forwards;
+    animation-delay: 1s, 1.1s;
+    animation-duration: 0.2s, 0.3s;
+  }
+}
+
+@keyframes btn-color-show {
+  to {
+    color: $c-dark;
   }
 }
