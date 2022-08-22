@@ -1,0 +1,191 @@
+.intro__title,
+.intro__date,
+.slider__item-title,
+.prizes__title,
+.rules__title,
+.game__title {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > span {
+    opacity: 0;
+    display: flex;
+    margin-right: 0.5em;
+    clip-path: inset(-50vw -50vw 0 -50vw);
+    animation-name: max-opacity;
+    animation-fill-mode: forwards;
+  }
+
+  & > span > span {
+    animation-name: slide;
+    animation-fill-mode: forwards;
+  }
+}
+
+.intro__title {
+  & > span {
+    animation-delay: 1s;
+  }
+
+  & > span span {
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+  }
+
+  & > span:nth-child(2) span {
+    animation-delay: 1.2s;
+    animation-duration: 0.5s;
+  }
+
+  & > span:nth-child(1) {
+    span:nth-child(1),
+    span:nth-child(4),
+    span:nth-child(7),
+    span:nth-child(10) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(2),
+    span:nth-child(5),
+    span:nth-child(8),
+    span:nth-child(11) {
+      transform: translate3d(0, 150%, 0);
+    }
+
+    span:nth-child(3),
+    span:nth-child(6),
+    span:nth-child(9),
+    span:nth-child(12) {
+      transform: translate3d(0, 70%, 0);
+    }
+  }
+
+  & > span:nth-child(2) {
+    span:nth-child(1),
+    span:nth-child(4) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(2),
+    span:nth-child(5) {
+      transform: translate3d(0, 150%, 0);
+    }
+
+    span:nth-child(3),
+    span:nth-child(6) {
+      transform: translate3d(0, 70%, 0);
+    }
+  }
+}
+
+.intro__date {
+  & > span {
+    animation-delay: 1.2s;
+  }
+
+  & > span span {
+    animation-duration: 2.2s;
+  }
+
+  & > span:nth-child(1) {
+    span:nth-child(1) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(2) {
+      transform: translate3d(0, 150%, 0);
+    }
+  }
+
+  & > span:nth-child(2) {
+    span {
+      transform: translate3d(0, 70%, 0);
+    }
+  }
+
+  & > span:nth-child(3) {
+    span:nth-child(1) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(2) {
+      transform: translate3d(0, 150%, 0);
+    }
+
+    span:nth-child(3),
+    span:nth-child(4) {
+      transform: translate3d(0, 70%, 0);
+    }
+
+    span:nth-child(5) {
+      transform: translate3d(0, 220%, 0);
+    }
+  }
+
+  & > span:nth-child(4) {
+    span {
+      transform: translate3d(0, 150%, 0);
+    }
+  }
+
+  & > span:nth-child(5) {
+    span:nth-child(1) {
+      transform: translate3d(0, 70%, 0);
+    }
+
+    span:nth-child(2) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(3) {
+      transform: translate3d(0, 150%, 0);
+    }
+
+    span:nth-child(4) {
+      transform: translate3d(0, 70%, 0);
+    }
+  }
+}
+
+.slider__item-title,
+.prizes__title,
+.rules__title,
+.game__title {
+  & > span span {
+    animation-duration: 0.5s;
+  }
+
+  & > span {
+    span:nth-child(1) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(3n) {
+      transform: translate3d(0, 150%, 0);
+    }
+
+    span:nth-child(2n) {
+      transform: translate3d(0, 70%, 0);
+    }
+
+    span:nth-child(5n) {
+      transform: translate3d(0, 220%, 0);
+    }
+
+    span:nth-child(7n) {
+      transform: translate3d(0, 150%, 0);
+    }
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes max-opacity {
+  to {
+    opacity: 1;
+  }
+}
