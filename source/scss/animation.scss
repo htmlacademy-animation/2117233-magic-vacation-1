@@ -198,20 +198,14 @@
   }
 }
 // Экран "Игра"
-@keyframes text-field {
-  from {
-    transform: translateX(50%) scaleX(0);
-  }
-
-  to {
-    transform: translateX(0) scaleX(1);
-  }
-}
-
 .form__field {
-  animation-name: text-field;
-  animation-duration: 0.35s;
-  animation-timing-function: linear;
-  animation-delay: 0.35s;
-  animation-fill-mode: both;
+  width: calc(100% - 18rem);
+  border-radius: 7%;
+  transform: translateX(50%) scaleX(0);
+  opacity: 0;
+
+  transition-property: all;
+  transition-duration: 0.35s;
+  transition-timing-function: linear;
+  transition-delay: 0.35s;
 }
