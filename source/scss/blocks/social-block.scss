@@ -3,8 +3,24 @@
 
   &:hover {
     .social-block__list {
-      opacity: 1;
       pointer-events: auto;
+    }
+
+    .social-block__link {
+      opacity: 1;
+      transform: translateY(0);
+
+      &--fb {
+        transition: color 0.3s, opacity 0.2s, transform 0.3s;
+      }
+
+      &--insta {
+        transition: color 0.3s, opacity 0.2s 0.05s, transform 0.3s 0.05s;
+      }
+
+      &--vk {
+        transition: color 0.3s, opacity 0.2s 0.1s, transform 0.3s 0.1s;
+      }
     }
   }
 }
@@ -17,6 +33,19 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+  transition: color 0.3s;
+
+  .theme-active[data-theme="purple"] & {
+    color: $c-purple;
+  }
+
+  .theme-active[data-theme="blue"] & {
+    color: $c-light-blue;
+  }
+
+  .theme-active[data-theme="lightBlue"] & {
+    color: $c-blue;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -35,6 +64,14 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transform: translate(-50%, -50%) scale(0);
+    transition:
+      all 0.3s,
+      transform 0.3s 0.2s cubic-bezier(0.39, 0.84, 0.65, 1.44);
+
+    .is-loaded & {
+      transform: translate(-50%, -50%) scale(1);
+    }
   }
 
   svg {
@@ -46,27 +83,70 @@
 
   &:hover,
   .social-block--active & {
-    transform: scaleY(1);
-    color: $c-light;
+    color: $c-purple;
+
+    .theme-active[data-theme="purple"] & {
+      color: $c-dark;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      color: $c-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      color: $c-light-blue;
+    }
 
     &::before {
       width: 112.5%;
       height: 112.5%;
-      background-color: $c-purple;
     }
   }
 
   &:focus {
-    color: $c-purple;
+    color: $c-light;
     outline: none;
+
+    .theme-active[data-theme="purple"] & {
+      color: $c-light;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      color: $c-light;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      color: $c-light;
+    }
 
     &::before {
       border-color: $c-purple;
+      background-color: $c-purple;
+
+      .theme-active[data-theme="purple"] & {
+        border-color: $c-dark;
+        background-color: $c-dark;
+      }
+
+      .theme-active[data-theme="blue"] & {
+        border-color: $c-light-blue;
+        background-color: $c-light-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        border-color: $c-blue;
+        background-color: $c-blue;
+      }
     }
 
     & + .social-block__list {
-      opacity: 1;
       pointer-events: auto;
+
+      .social-block__link {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0s;
+      }
     }
   }
 
@@ -79,6 +159,16 @@
       height: 100%;
       background-color: $c-purple;
       border-color: $c-purple;
+
+      .theme-active[data-theme="blue"] & {
+        border-color: $c-light-blue;
+        background-color: $c-light-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        border-color: $c-blue;
+        background-color: $c-blue;
+      }
     }
   }
 }
@@ -89,7 +179,6 @@
   top: 100%;
   right: 0;
   margin-top: 1.5rem;
-  opacity: 0;
   pointer-events: none;
 
   @media (min-width: $stop-scaling) {
@@ -102,7 +191,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 0;
-    opacity: 1;
     pointer-events: auto;
   }
 
@@ -112,7 +200,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 0;
-    opacity: 1;
     pointer-events: auto;
   }
 
@@ -130,12 +217,10 @@
   }
 
   &:hover {
-    opacity: 1;
     pointer-events: auto;
   }
 
   &:focus-within {
-    opacity: 1;
     pointer-events: auto;
   }
 
@@ -170,6 +255,9 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: color 0.3s, opacity 0.3s, transform 0.3s 0.3s;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -179,15 +267,57 @@
   @media (max-width: $tablet) and (orientation: portrait) {
     color: $c-light;
     background-color: $c-dark;
+
+    .theme-active[data-theme="purple"] & {
+      color: $c-light;
+      background-color: $c-purple;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      color: $c-light;
+      background-color: $c-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      color: $c-light;
+      background-color: $c-light-blue;
+    }
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
     color: $c-light;
     background-color: $c-dark;
+
+    .theme-active[data-theme="purple"] & {
+      color: $c-light;
+      background-color: $c-purple;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      color: $c-light;
+      background-color: $c-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      color: $c-light;
+      background-color: $c-light-blue;
+    }
   }
 
   &:hover {
     color: $c-purple;
+
+    .theme-active[data-theme="purple"] & {
+      color: $c-dark;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      color: $c-light-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      color: $c-blue;
+    }
   }
 
   &:focus {
@@ -195,6 +325,21 @@
     background-color: $c-light;
     border-color: $c-purple;
     outline: none;
+
+    .theme-active[data-theme="purple"] & {
+      color: $c-dark;
+      border-color: $c-dark;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      color: $c-light-blue;
+      border-color: $c-light-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      color: $c-blue;
+      border-color: $c-blue;
+    }
   }
 
   &:active,
