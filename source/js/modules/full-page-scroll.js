@@ -1,18 +1,30 @@
 import throttle from 'lodash/throttle';
 
+const PAGE_INDEX = {
+  TOP: 0,
+  STORY: 1,
+  PRIZES: 2,
+  RULES: 3,
+  GAME: 4,
+};
+
 export default class FullPageScroll {
   constructor() {
-    this.THROTTLE_TIMEOUT = 1000;
+    this.TIMEOUT = {
+      THROTTLE: 1000,
+      COVER: 500
+    };
     this.scrollFlag = true;
     this.timeout = null;
 
+    this.bodyElement = document.querySelector(`body`);
+    this.curtainElement = document.querySelector(`.screen__cover`);
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
 
     this.screen = {
       active: 0,
-      previous: 0,
-      cover: document.querySelector(`.cover-from-bottom-to-top`)
+      previous: 0
     };
 
     this.onScrollHandler = this.onScroll.bind(this);
@@ -20,7 +32,7 @@ export default class FullPageScroll {
   }
 
   init() {
-    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
+    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.TIMEOUT.THROTTLE, {trailing: true}));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
@@ -41,7 +53,7 @@ export default class FullPageScroll {
     this.timeout = setTimeout(() => {
       this.timeout = null;
       this.scrollFlag = true;
-    }, this.THROTTLE_TIMEOUT);
+    }, this.TIMEOUT.THROTTLE);
   }
 
   onUrlHashChanged() {
@@ -49,6 +61,11 @@ export default class FullPageScroll {
     this.screen.previous = this.screen.active;
     this.screen.active = (newIndex < 0) ? 0 : newIndex;
     this.changePageDisplay();
+    if (this.screen.active === PAGE_INDEX.STORY) {
+      this.bodyElement.classList.add(`theme-active`);
+      return;
+    }
+    this.bodyElement.classList.remove(`theme-active`);
   }
 
   changePageDisplay() {
@@ -57,32 +74,38 @@ export default class FullPageScroll {
     this.emitChangeDisplayEvent();
   }
 
-  setActivateScreen(removeCover) {
-    this.screenElements.forEach((screen) => {
-      screen.classList.remove(`active`);
-      screen.classList.add(`screen--hidden`);
-    });
-    this.screenElements[this.screen.active].classList.remove(`screen--hidden`);
-    this.screenElements[this.screen.active].classList.add(`active`);
-
-    if (removeCover) {
-      this.screen.cover.classList.remove(`show`);
-    }
-  }
-
   changeVisibilityDisplay() {
-    // экраны
-    const active = this.screenElements[this.screen.active].id;
-    const previous = this.screenElements[this.screen.previous].id;
+    let timeout = 0;
 
-    const showStoryCover = active !== `story` && previous === `story`;
+    const isStoryToPrizes =
+      this.screen.previous === PAGE_INDEX.STORY
+      && this.screen.active === PAGE_INDEX.PRIZES;
+    const isPrizesToRules =
+      this.screen.previous === PAGE_INDEX.PRIZES
+      && this.screen.active === PAGE_INDEX.RULES;
 
-    if (showStoryCover) {
-      this.screen.cover.classList.add(`show`);
-      setTimeout(() => this.setActivateScreen(true), 750);
-    } else {
-      this.setActivateScreen();
+    this.curtainElement.classList.remove(`showed`);
+    if (isStoryToPrizes) {
+      this.curtainElement.classList.add(`showed`);
+      timeout = this.TIMEOUT.COVER;
     }
+
+    if (isPrizesToRules) {
+      const footer = this.screenElements[this.screen.previous].querySelector(`.screen__footer-note`);
+      footer.classList.add(`hide`);
+      timeout = this.TIMEOUT.COVER;
+
+      setTimeout(() => footer.classList.remove(`hide`), timeout);
+    }
+
+    setTimeout(() => {
+      this.screenElements.forEach((screen) => {
+        screen.classList.add(`screen--hidden`);
+        screen.classList.remove(`active`);
+      });
+      this.screenElements[this.screen.active].classList.remove(`screen--hidden`);
+      setTimeout(() => this.screenElements[this.screen.active].classList.add(`active`), 100);
+    }, timeout);
   }
 
   changeActiveMenuItem() {

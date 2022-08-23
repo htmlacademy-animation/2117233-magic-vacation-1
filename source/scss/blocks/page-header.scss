@@ -27,7 +27,6 @@
 }
 
 .page-header__logo {
-  @include hover;
   position: relative;
   flex: none;
   top: -0.5rem;
@@ -35,8 +34,16 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
-  opacity: 0;
   transform: translateX(-2rem);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transition-timing-function: $smooth-move;
+
+  .is-loaded & {
+    @include hover;
+    transform: translateX(0);
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -52,6 +59,18 @@
 
     .page-header--menu-opened & {
       color: $c-dark;
+
+      .theme-active[data-theme="purple"] & {
+        color: $c-purple;
+      }
+
+      .theme-active[data-theme="blue"] & {
+        color: $c-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        color: $c-light-blue;
+      }
     }
   }
 
@@ -63,6 +82,18 @@
 
     .page-header--menu-opened & {
       color: $c-dark;
+
+      .theme-active[data-theme="purple"] & {
+        color: $c-purple;
+      }
+
+      .theme-active[data-theme="blue"] & {
+        color: $c-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        color: $c-light-blue;
+      }
     }
   }
 
@@ -99,12 +130,36 @@
     right: 0.8rem;
     height: 1px;
     background-color: $c-dark;
+
+    .theme-active[data-theme="purple"] & {
+      background-color: $c-purple;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      background-color: $c-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      background-color: $c-light-blue;
+    }
   }
 
   &::before {
     top: 0.9rem;
     width: 1rem;
     box-shadow: 0 0.6rem 0 0 $c-dark;
+
+    .theme-active[data-theme="purple"] & {
+      box-shadow: 0 0.6rem 0 0 $c-purple;
+    }
+
+    .theme-active[data-theme="blue"] & {
+      box-shadow: 0 0.6rem 0 0 $c-blue;
+    }
+
+    .theme-active[data-theme="lightBlue"] & {
+      box-shadow: 0 0.6rem 0 0 $c-light-blue;
+    }
   }
 
   &::after {
@@ -121,6 +176,12 @@
       width: 2.6rem;
       height: 2px;
       box-shadow: none;
+
+      .theme-active[data-theme="purple"] &,
+      .theme-active[data-theme="blue"] &,
+      .theme-active[data-theme="lightBlue"] & {
+        box-shadow: none;
+      }
     }
 
     &::after {
@@ -132,6 +193,12 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s $smooth-move;
+
+  .is-loaded & {
+    opacity: 1;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -179,7 +246,6 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
-  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -206,12 +272,36 @@
       flex-direction: column;
       align-items: flex-start;
       padding-top: 3.8rem;
+
+      .theme-active[data-theme="purple"] & {
+        color: $c-purple;
+      }
+
+      .theme-active[data-theme="blue"] & {
+        color: $c-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        color: $c-light-blue;
+      }
     }
 
     @media (max-width: $mobile) and (orientation: landscape) {
       flex-direction: column;
       align-items: flex-start;
       padding-top: 2rem;
+
+      .theme-active[data-theme="purple"] & {
+        color: $c-purple;
+      }
+
+      .theme-active[data-theme="blue"] & {
+        color: $c-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        color: $c-light-blue;
+      }
     }
   }
 
@@ -244,34 +334,63 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
+    transition: color 0.4s;
 
     &::after {
       content: "";
       position: absolute;
+      right: 0;
       bottom: 0;
       width: 0;
       height: 2px;
       background-color: $c-light;
-      left: auto;
-      right: 0;
-      display: block;
+      transition: all 0.4s;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
         right: 0;
         background-color: $c-dark;
+
+        .theme-active[data-theme="purple"] & {
+          background-color: $c-purple;
+        }
+
+        .theme-active[data-theme="blue"] & {
+          background-color: $c-blue;
+        }
+
+        .theme-active[data-theme="lightBlue"] & {
+          background-color: $c-light-blue;
+        }
       }
 
       @media (max-width: $mobile) and (orientation: landscape) {
         left: 0;
         right: 0;
         background-color: $c-dark;
+
+        .theme-active[data-theme="purple"] & {
+          background-color: $c-purple;
+        }
+
+        .theme-active[data-theme="blue"] & {
+          background-color: $c-blue;
+        }
+
+        .theme-active[data-theme="lightBlue"] & {
+          background-color: $c-light-blue;
+        }
       }
     }
 
     &.active {
       &::after {
         width: 0;
+        left: 0;
+
+        .is-loaded & {
+          width: 100%;
+        }
       }
     }
 
@@ -280,12 +399,35 @@
       color: $c-purple;
       outline: none;
 
+      .theme-active[data-theme="purple"] & {
+        color: $c-dark;
+      }
+
+      .theme-active[data-theme="blue"] & {
+        color: $c-light-blue;
+      }
+
+      .theme-active[data-theme="lightBlue"] & {
+        color: $c-blue;
+      }
+
       &::after {
+        left: 0;
+        width: 100%;
         opacity: 1;
         background-color: $c-purple;
-        left: 0;
-        right: auto;
-        width: 100%;
+
+        .theme-active[data-theme="purple"] & {
+          background-color: $c-dark;
+        }
+
+        .theme-active[data-theme="blue"] & {
+          background-color: $c-light-blue;
+        }
+
+        .theme-active[data-theme="lightBlue"] & {
+          background-color: $c-blue;
+        }
       }
     }
   }
@@ -293,8 +435,6 @@
 
 .page-header__social {
   margin-left: 4.8rem;
-  opacity: 0;
-  transform: scale(0);
 
   @media (min-width: $stop-scaling) {
     margin-left: 48px;

@@ -1,4 +1,5 @@
 // modules
+import {initial} from './modules/initial.js';
 import mobileHeight from './modules/mobile-height-adjust.js';
 import slider from './modules/slider.js';
 import menu from './modules/menu.js';
@@ -11,6 +12,7 @@ import FullPageScroll from './modules/full-page-scroll.js';
 import {letterByLetter} from './modules/letter-by-letter.js';
 
 // init modules
+initial();
 mobileHeight();
 slider();
 menu();

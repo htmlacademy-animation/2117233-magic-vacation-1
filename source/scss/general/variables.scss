@@ -1,6 +1,8 @@
 $c-light: #ffffff;
 $c-dark: #5f458c;
 $c-purple: #a67ee5;
+$c-blue: #3e72ee;
+$c-light-blue: #90b8e2;
 
 $font: "Proxima Nova", "Arial", sans-serif;
 $font-alt: "Radical",  "Arial", sans-serif;
@@ -21,6 +23,6 @@ $retina-dppx: 1.5dppx;
 $index: 1.38871;
 
 $cubic-fast: cubic-bezier(0.44, 1.2, 0.78, 0.94);
-$cubic-jump: cubic-bezier(0.89, -0.1, 0.54, 1.52);
 $smooth-deceleration: cubic-bezier(0, 0, 0.2, 1);
 $smooth-jump: cubic-bezier(0.32, 1, 0.59, 1.18);
+$smooth-move: cubic-bezier(0.32, 0.98, 0.59, 0.99);
