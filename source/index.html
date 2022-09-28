@@ -192,12 +192,9 @@
           </div>
           <ul class="prizes__list">
             <li class="prizes__item prizes__item--journeys">
-              <div class="prizes__icon">
-                <picture>
-                  <source srcset="img/prize1-mob.svg" media="(orientation: portrait)">
-                  <img src="img/prize1.svg" alt="">
-                </picture>
-              </div>
+              <object id="journeysPrize" type="image/svg+xml" data="img/primary-award.svg" class="prizes__icon" width="350" height="330">
+                <img src="img/primary-award.svg" alt="fallbackSvg" width="350" height="330">
+              </object>
               <p class="prizes__desc">
                 <b>3</b>
                 <span>загадочных путешествия</span>
@@ -217,10 +214,7 @@
             </li>
             <li class="prizes__item prizes__item--codes">
               <div class="prizes__icon">
-                <picture>
-                  <source srcset="img/prize3-mob.svg" media="(orientation: portrait)">
                   <img src="img/prize3.svg" alt="">
-                </picture>
               </div>
               <p class="prizes__desc">
                 <b>900</b>
@@ -351,7 +345,7 @@
           <div class="result__image">
             <picture>
               <source srcset="img/result1-mob.png 1x, img/result1-mob@2x.png 2x" media="(max-width: 768px) and (orientation: portrait)">
-              <img src="img/result1.png" srcset="img/result1@2x.png 2x" alt="">
+              <img src="img/result1.png" srcset="img/result1@2x.png 2x" alt="" class="image__full-screen">
             </picture>
           </div>
           <h2 class="result__title">
@@ -403,21 +397,11 @@
       <div class="screen__wrapper">
         <div class="result result--prize">
           <div class="result__image">
-            <div class="result__image-wrapper result__right-leaf">
-              <img src="img/module-2/win-suitcase/leaf blue 1.png" alt="">
-            </div>
-            <div class="result__image-wrapper result__left-leaf">
-              <img src="img/module-2/win-suitcase/leaf blue 2.png" alt="">
-            </div>
-            <div class="result__image-wrapper result__green-leaf">
-              <img src="img/module-2/win-suitcase/leaf green.png" alt="">
-            </div>
-            <div class="result__image-wrapper result__suitcase">
-              <img src="img/module-2/win-suitcase/suitcase.png" alt="">
-            </div>
-            <div class="result__image-wrapper result__flamingo">
-              <img src="img/module-2/win-suitcase/flamingo.png" alt="">
-            </div>
+            <img src="img/module-2/win-suitcase/leaf blue 1.png" class="image_leaf-blue-1" alt="leaf blue 1">
+            <img src="img/module-2/win-suitcase/leaf blue 2.png" class="image_leaf-blue-2" alt="leaf blue 2">
+            <img src="img/module-2/win-suitcase/leaf green.png" class="image_leaf-green" alt="leaf green">
+            <img src="img/module-2/win-suitcase/suitcase.png" class="image_suitcase" alt="suitcase">
+            <img src="img/module-2/win-suitcase/flamingo.png" class="image_flamingo" alt="flamingo">
           </div>
           <h2 class="result__title">
             <span class="visually-hidden">ПОбеда!</span>
@@ -471,7 +455,7 @@
           <div class="result__image">
             <picture>
               <source srcset="img/result3-mob.png 1x, img/result3-mob@2x.png 2x" media="(max-width: 768px) and (orientation: portrait)">
-              <img src="img/result3.png" srcset="img/result3@2x.png 2x" alt="">
+              <img src="img/result3.png" srcset="img/result3@2x.png 2x" alt="" class="image__full-screen">
             </picture>
           </div>
           <h2 class="result__title">
