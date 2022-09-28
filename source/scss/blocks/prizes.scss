@@ -93,7 +93,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-top: auto;
+  opacity: 0;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     flex-direction: column;
@@ -101,6 +101,10 @@
     justify-content: flex-start;
     margin: auto 0;
     padding-left: 2rem;
+  }
+
+  .screen--prizes.active & {
+    animation: fadeIn 300ms ease-out 100ms both;
   }
 }
 
@@ -111,9 +115,10 @@
     margin-left: 75px;
   }
 
-  @media (max-width: $tablet) and (orientation: portrait) {
+  @media (max-width: $mobile) and (orientation: portrait) {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    height: 20vh;
     margin-left: 0;
     margin-bottom: 2.8rem;
 
@@ -127,11 +132,21 @@
   }
 
   &--journeys {
+    transition: transform 0.8s ease-out 3.3s;
+    transform: translateX(330px);
+
+    @media (max-width: $mobile) and (orientation: portrait) {
+      transform: translateX(0);
+    }
+
+    &.active {
+      transform: translateX(0);
+    }
+
     .prizes__icon {
       position: relative;
       left: -5.9rem;
       bottom: -1.4rem;
-      width: 26.8rem;
 
       @media (min-width: $stop-scaling) {
         left: -59px;
@@ -141,22 +156,19 @@
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
-        bottom: 0;
+        bottom: 1.8rem;
         width: 9.4rem;
       }
 
       @media (max-width: $tablet) and (orientation: landscape) {
         left: -2rem;
-        width: 13rem;
-      }
-
-      @media (max-width: $mobile) and (orientation: landscape) {
-        width: 10rem;
       }
     }
   }
 
   &--cases {
+    opacity: 0;
+
     margin-left: 7rem;
 
     @media (min-width: $stop-scaling) {
@@ -191,6 +203,8 @@
   }
 
   &--codes {
+    opacity: 0;
+
     @media (max-width: $tablet) and (orientation: portrait) {
       padding-left: 0.8rem;
     }
@@ -232,6 +246,7 @@
 .prizes__desc {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   margin: 5.6rem 0 0 0;
   font-size: 1.8rem;
   line-height: 1.1;

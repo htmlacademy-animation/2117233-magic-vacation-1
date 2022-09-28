@@ -21,6 +21,7 @@ export default class FullPageScroll {
     this.curtainElement = document.querySelector(`.screen__cover`);
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.journeyItem = document.querySelector(`.prizes__item--journeys`);
 
     this.screen = {
       active: 0,
@@ -74,12 +75,29 @@ export default class FullPageScroll {
     this.emitChangeDisplayEvent();
   }
 
+
+  animatePrizes() {
+    if (this.journeyItem.classList.contains(`active`)) {
+      return;
+    }
+
+    const contentDocument = document.getElementById(`journeysPrize`).contentDocument;
+    const journeysAnimation = contentDocument.getElementById(`journeysAnimation`);
+
+    if (!contentDocument) {
+      return;
+    }
+
+    if (journeysAnimation) {
+      this.journeyItem.classList.add(`active`);
+      journeysAnimation.beginElement();
+    }
+  }
+
   changeVisibilityDisplay() {
     let timeout = 0;
 
-    const isStoryToPrizes =
-      this.screen.previous === PAGE_INDEX.STORY
-      && this.screen.active === PAGE_INDEX.PRIZES;
+    const isStoryToPrizes = this.screen.active === PAGE_INDEX.PRIZES;
     const isPrizesToRules =
       this.screen.previous === PAGE_INDEX.PRIZES
       && this.screen.active === PAGE_INDEX.RULES;
@@ -88,6 +106,7 @@ export default class FullPageScroll {
     if (isStoryToPrizes) {
       this.curtainElement.classList.add(`showed`);
       timeout = this.TIMEOUT.COVER;
+      setTimeout(() => this.animatePrizes(), timeout + 500);
     }
 
     if (isPrizesToRules) {
