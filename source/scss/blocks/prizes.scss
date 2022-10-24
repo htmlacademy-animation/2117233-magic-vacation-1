@@ -160,28 +160,8 @@
   &--codes {
     opacity: 0;
 
-    @media (max-width: $tablet) and (orientation: portrait) {
-      padding-left: 0.8rem;
-    }
-
-    .prizes__icon {
-      width: 26rem;
-
-      @media (min-width: $stop-scaling) {
-        width: 260px;
-      }
-
-      @media (max-width: $tablet) and (orientation: portrait) {
-        width: 8.66rem;
-      }
-
-      @media (max-width: $tablet) and (orientation: landscape) {
-        width: 13rem;
-      }
-
-      @media (max-width: $mobile) and (orientation: landscape) {
-        width: 10rem;
-      }
+    &.active {
+      opacity: 1;
     }
   }
 }
