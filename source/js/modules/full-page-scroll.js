@@ -22,6 +22,7 @@ export default class FullPageScroll {
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
     this.journeyItem = document.querySelector(`.prizes__item--journeys`);
+    this.casesItem = document.querySelector(`.prizes__item--cases`);
 
     this.screen = {
       active: 0,
@@ -81,10 +82,10 @@ export default class FullPageScroll {
       return;
     }
 
-    const contentDocument = document.getElementById(`journeysPrize`).contentDocument;
-    const journeysAnimation = contentDocument.getElementById(`journeysAnimation`);
+    const firstSvgPrize = document.getElementById(`journeysPrize`).contentDocument;
+    const journeysAnimation = firstSvgPrize.getElementById(`journeysAnimation`);
 
-    if (!contentDocument) {
+    if (!firstSvgPrize) {
       return;
     }
 
@@ -92,6 +93,16 @@ export default class FullPageScroll {
       this.journeyItem.classList.add(`active`);
       journeysAnimation.beginElement();
     }
+
+    setTimeout(() => {
+      const secondSvgPrize = document.getElementById(`casesPrize`).contentDocument;
+      const animationTag = secondSvgPrize.getElementById(`casesAnimation`);
+
+      if (animationTag) {
+        this.casesItem.classList.add(`active`);
+        animationTag.beginElement();
+      }
+    }, 4000);
   }
 
   changeVisibilityDisplay() {
