@@ -436,3 +436,74 @@
     color: $c-dark;
   }
 }
+
+@keyframes animateLetters {
+  from {
+    stroke-dasharray: 0 100%;
+  }
+
+  to {
+    stroke-dasharray: 100% 0;
+  }
+}
+
+@keyframes guessedWrong {
+  0% {
+    transform: translate(0, 0);
+    animation-timing-function: cubic-bezier(0.88, 0, 1, 1);
+  }
+
+  65% {
+    transform: translate(0, 100px);
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+  }
+
+  85% {
+    transform: translate(0, 95px);
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+  }
+
+  100% {
+    transform: translate(0, 100px);
+  }
+}
+
+g.win > g {
+  animation: animateLetters 1000ms linear both;
+}
+
+g.guessed-wrong g {
+  animation: animateLetters 1000ms cubic-bezier(0.21, 0, 0.8, 1) both, guessedWrong 900ms linear both;
+}
+
+g.guessed-wrong .line2 {
+  animation-delay: 45ms;
+}
+
+g.guessed-wrong .line3 {
+  animation-delay: 85ms;
+}
+
+g.guessed-wrong .line4 {
+  animation-delay: 110ms;
+}
+
+g.guessed-wrong .line5 {
+  animation-delay: 130ms;
+}
+
+g.guessed-wrong .line6 {
+  animation-delay: 150ms;
+}
+
+g.guessed-wrong .line7 {
+  animation-delay: 215ms;
+}
+
+g.guessed-wrong .line8 {
+  animation-delay: 300ms;
+}
+
+g.guessed-wrong .line9 {
+  animation-delay: 390ms;
+}
