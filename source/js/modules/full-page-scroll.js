@@ -23,6 +23,7 @@ export default class FullPageScroll {
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
     this.journeyItem = document.querySelector(`.prizes__item--journeys`);
     this.casesItem = document.querySelector(`.prizes__item--cases`);
+    this.codesItem = document.querySelector(`.prizes__item--codes`);
 
     this.screen = {
       active: 0,
@@ -81,7 +82,7 @@ export default class FullPageScroll {
     if (this.journeyItem.classList.contains(`active`)) {
       return;
     }
-
+    // 1st
     const firstSvgPrize = document.getElementById(`journeysPrize`).contentDocument;
     const journeysAnimation = firstSvgPrize.getElementById(`journeysAnimation`);
 
@@ -93,7 +94,7 @@ export default class FullPageScroll {
       this.journeyItem.classList.add(`active`);
       journeysAnimation.beginElement();
     }
-
+    // 2nd
     setTimeout(() => {
       const secondSvgPrize = document.getElementById(`casesPrize`).contentDocument;
       const animationTag = secondSvgPrize.getElementById(`casesAnimation`);
@@ -103,6 +104,16 @@ export default class FullPageScroll {
         animationTag.beginElement();
       }
     }, 4000);
+    // 3rd
+    setTimeout(() => {
+      const thirdSvgPrize = document.getElementById(`additionalAward`).contentDocument;
+      const animationTag = thirdSvgPrize.getElementById(`suitcaseAnimation`);
+
+      if (animationTag) {
+        this.codesItem.classList.add(`active`);
+        animationTag.beginElement();
+      }
+    }, 6200);
   }
 
   changeVisibilityDisplay() {
